@@ -6,7 +6,7 @@ const logger = getLogger('INDEX_ROUTE');
 /* GET home page. */
 router.get('/', function (_req, res, _next) {
   logger.info('Kenyan Auctioneers');
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Kenyan Auctioneers' });
 });
 
 export default router;

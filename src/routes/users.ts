@@ -5,8 +5,8 @@ const logger = getLogger('USER_ROUTE');
 
 /* GET users listing. */
 router.get('/', function (_req, res, _next) {
-  logger.info('respond with a resource');
-  res.send('respond with a resource');
+  // logger.info('respond with a resource');
+  // res.send('respond with a resource');
 });
 
 export default router;
