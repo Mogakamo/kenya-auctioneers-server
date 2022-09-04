@@ -17,7 +17,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  Role: "ADMIN" | "BIDDER" | "SELLER" | "SUPERADMIN"
+  Role: "ADMIN" | "BIDDER" | "SELLER" | "SUPER_ADMIN"
 }
 
 export interface NexusGenScalars {
@@ -37,9 +37,9 @@ export interface NexusGenObjects {
   Query: {};
   User: { // root type
     email: string; // String!
-    id: number; // Int!
-    name: string; // String!
+    id?: number | null; // Int
     role: NexusGenEnums['Role']; // Role!
+    username: string; // String!
   }
 }
 
@@ -63,13 +63,13 @@ export interface NexusGenFieldTypes {
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
   }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    users: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type
     email: string; // String!
-    id: number; // Int!
-    name: string; // String!
+    id: number | null; // Int
     role: NexusGenEnums['Role']; // Role!
+    username: string; // String!
   }
 }
 
@@ -83,13 +83,13 @@ export interface NexusGenFieldTypeNames {
     signup: 'AuthPayload'
   }
   Query: { // field return type name
-    ok: 'Boolean'
+    users: 'User'
   }
   User: { // field return type name
     email: 'String'
     id: 'Int'
-    name: 'String'
     role: 'Role'
+    username: 'String'
   }
 }
 
