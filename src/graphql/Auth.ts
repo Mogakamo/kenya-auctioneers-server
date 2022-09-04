@@ -1,6 +1,7 @@
 import { extendType, nonNull, objectType, stringArg } from "nexus";
 import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
+import { APP_SECRET } from "../utils/auth";
 
 export const AuthPayload = objectType({
   name: "AuthPayload",
@@ -46,18 +47,18 @@ export const AuthMutation = extendType({
     t.nonNull.field("signup", {
       type: "AuthPayload",
       args: {
+        username: nonNull(stringArg()),
         email: nonNull(stringArg()),
         password: nonNull(stringArg()),
-        name: nonNull(stringArg()),
         role: nonNull(stringArg()),
       },
       async resolve(_, args, ctx) {
-        const { email, name } = args;
+        const { email, username, role } = args;
         const password = await bcrypt.hash(args.password, 10);
 
         const user = await ctx.prisma.user.create({
           data: {
-            name,
+            username,
             email,
             password,
             role,

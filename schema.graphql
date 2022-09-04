@@ -9,16 +9,23 @@ type AuthPayload {
 
 type Mutation {
   login(email: String!, password: String!): AuthPayload!
-  signup(email: String!, name: String!, password: String!, role: String!): AuthPayload!
+  signup(email: String!, password: String!, role: String!, username: String!): AuthPayload!
 }
 
 type Query {
   ok: Boolean!
 }
 
+enum Role {
+  ADMIN
+  BIDDER
+  SELLER
+  SUPERADMIN
+}
+
 type User {
   email: String!
   id: Int!
   name: String!
-  role: String!
+  role: Role!
 }
