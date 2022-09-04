@@ -10,7 +10,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2                        
+      - name: GitHub Action for pnpm
+        uses: znck/pnpm@v0.1.0-alpha.1                
       - run: pnpm install --frozen-lockfile
       - name: Run production migration                   
         run: pnpm run migrate:deploy                           
