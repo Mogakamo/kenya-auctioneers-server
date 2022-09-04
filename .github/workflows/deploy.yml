@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: GitHub Action for pnpm
-        uses: znck/pnpm@v0.1.0-alpha.1  
+        uses: znck/pnpm@v0.1.0-alpha.1 
       - run: npm i -g pnpm
+      - run: cd ../../
       - run: pnpm install
       - name: Run production migration                   
         run: pnpm run migrate:deploy                           
