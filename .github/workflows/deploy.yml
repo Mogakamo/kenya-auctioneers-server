@@ -46,6 +46,8 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           
+      - run: git config user.email "mogaka.amo254@gmail.com"
+      - run: git config user.name "Mogakamo"
       - run: git add -A && git commit -m "Updated code" 
           
       - uses: akhileshns/heroku-deploy@v3.12.12          
