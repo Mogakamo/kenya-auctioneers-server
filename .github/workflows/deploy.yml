@@ -12,8 +12,9 @@ jobs:
     steps:
       - name: GitHub Action for pnpm
         uses: znck/pnpm@v0.1.0-alpha.1 
+      - name: Sync package.json with repo info
+        uses: Jaid/action-sync-node-meta@v1.4.0
       - run: npm i -g pnpm
-      - run: cd ../../
       - run: pnpm install
       - name: Run production migration                   
         run: pnpm run migrate:deploy                           
