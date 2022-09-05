@@ -2,6 +2,7 @@ import { extendType, nonNull, objectType, stringArg } from "nexus";
 import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
 import { APP_SECRET } from "../utils/auth";
+import { Role } from "@prisma/client";
 
 export const AuthPayload = objectType({
   name: "AuthPayload",
@@ -61,7 +62,7 @@ export const AuthMutation = extendType({
             username,
             email,
             password,
-            role,
+            role: role as Role
           },
         });
 

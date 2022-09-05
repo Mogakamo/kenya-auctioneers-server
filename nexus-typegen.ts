@@ -17,7 +17,6 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  Role: "ADMIN" | "BIDDER" | "SELLER" | "SUPER_ADMIN"
 }
 
 export interface NexusGenScalars {
@@ -38,8 +37,8 @@ export interface NexusGenObjects {
   User: { // root type
     email: string; // String!
     id?: number | null; // Int
-    role: NexusGenEnums['Role']; // Role!
-    username: string; // String!
+    role: string; // String!
+    username?: string | null; // String
   }
 }
 
@@ -51,7 +50,7 @@ export interface NexusGenUnions {
 
 export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   AuthPayload: { // field return type
@@ -63,13 +62,13 @@ export interface NexusGenFieldTypes {
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
   }
   Query: { // field return type
-    users: NexusGenRootTypes['User']; // User!
+    users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   User: { // field return type
     email: string; // String!
     id: number | null; // Int
-    role: NexusGenEnums['Role']; // Role!
-    username: string; // String!
+    role: string; // String!
+    username: string | null; // String
   }
 }
 
@@ -88,7 +87,7 @@ export interface NexusGenFieldTypeNames {
   User: { // field return type name
     email: 'String'
     id: 'Int'
-    role: 'Role'
+    role: 'String'
     username: 'String'
   }
 }
@@ -118,7 +117,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects;
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = keyof NexusGenEnums;
+export type NexusGenEnumNames = never;
 
 export type NexusGenInterfaceNames = never;
 

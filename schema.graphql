@@ -13,19 +13,12 @@ type Mutation {
 }
 
 type Query {
-  users: User!
-}
-
-enum Role {
-  ADMIN
-  BIDDER
-  SELLER
-  SUPER_ADMIN
+  users: [User]
 }
 
 type User {
   email: String!
   id: Int
-  role: Role!
-  username: String!
+  role: String!
+  username: String
 }
